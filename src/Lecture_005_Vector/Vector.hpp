@@ -50,7 +50,7 @@ public:
 	//! back iterator
 	iterator end() noexcept { return avail_; }
 	const_iterator end() const noexcept { return avail_; }
-	
+
 	//! clear elements
 	void clear() { uncreate(); }
 	//! is empty?
