@@ -41,32 +41,30 @@ public:
         return *this;
     }
     //! move constructor
-    Array(Array&& arr) noexcept : sz_(0), data_(nullptr) {
-        swaper(arr);
-    }
+    Array(Array&& arr) noexcept
+        : sz_(std::exchange(arr.sz_, 0)), data_(std::exchange(arr.data_, nullptr)) {}
     //! move assignment
     Array& operator=(Array&& arr) {
         if (this != &arr) {
-            if (data_)
-                destroy();
-            swaper(arr);
+            sz_ = std::exchange(arr.sz_, 0);
+            data_ = std::exchange(arr.data_, nullptr);
         }
         return *this;
     }
     //! if sz_ is 0 then to be return true otherwise false;
-    bool empty() const { return sz_ ? true : false; }
+    bool empty() const noexcept { return sz_ ? true : false; }
     //! get size
-    size_type size() const { return sz_; }
+    size_type size() const noexcept { return sz_; }
     //! clear all elements
     void clear() { destroy(); }
     //! begin
-    iterator begin() { return data_; }
+    iterator begin() noexcept { return data_; }
     //! end
-    iterator end() { return data_+sz_; }
+    iterator end() noexcept { return data_+sz_; }
     //! const begin
-    const_iterator begin() const { return data_; }
+    const_iterator begin() const noexcept { return data_; }
     //! const end
-    const_iterator end() const { return data_+sz_; }
+    const_iterator end() const noexcept { return data_+sz_; }
     //! random accesseble operator
     reference operator[](size_type i) { return data_[i]; }
     //! const random accesseble operator

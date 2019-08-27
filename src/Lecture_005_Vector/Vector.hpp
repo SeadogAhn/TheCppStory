@@ -7,11 +7,11 @@
 
 template <class T> class Vec {
 public:
-	using iterator = T *;
-	using const_iterator = const T*;
 	using size_type= size_t;
 	using value_type = T;
-	using reference = T & ;
+	using iterator = T *;
+	using const_iterator = const T*;
+    using reference = T & ;
 	using const_reference = const T&;
 
 	// constructors
@@ -109,7 +109,6 @@ template <class T> void Vec<T>::uncreate()
 	}
 	// reset pointers to indicate that the `Vec' is empty again
 	data_ = limit_ = avail_ = 0;
-
 }
 
 template <class T> void Vec<T>::grow()
