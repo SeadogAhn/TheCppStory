@@ -5,27 +5,27 @@
 #include <cstddef>
 #include <memory>
 
-class CString {
+class String {
 public:
 	typedef char value_type;
 	typedef value_type* iterator;
 	typedef const value_type* const_iterator;
 	typedef size_t size_type;
 	// friend functions for in, out stream
-	friend std::ostream& operator<< (std::ostream& os, const CString& cs);
-	friend std::istream& operator>> (std::istream& is, CString& cs);
+	friend std::ostream& operator<< (std::ostream& os, const String& cs);
+	friend std::istream& operator>> (std::istream& is, String& cs);
 	//! default constructor
-	CString();
+	String();
 	//! constructor overloading
-	CString(const value_type* str);
+	String(const value_type* str);
 	//! constructor overloading
-	CString(const CString& str);
+	String(const String& str);
 	//! destructor
-	virtual ~CString();
+	virtual ~String();
 	//! operator= overloading
-	CString& operator=(const CString& str);
+	String& operator=(const String& str);
 	//! operator+= overaloding
-	CString& operator+=(const CString& cs);
+	String& operator+=(const String& cs);
 	//! operator[]
 	value_type& operator[](size_type i) { return data[i]; }
 	//! operator[] const
@@ -63,4 +63,4 @@ private:
 	iterator avail;	///< (one past) the allocated memory
 };
 
-const CString operator+ (const CString& cs1, const CString& cs2);
+const String operator+ (const String& cs1, const String& cs2);

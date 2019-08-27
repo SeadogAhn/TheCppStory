@@ -45,6 +45,7 @@ int main()
 
     cout << arr1[1] << ',' << arr2[1] << ',' << arrStr[1] << endl;
     arr1[2] = 10.8;
+    arr1[5] = 22.5;
     print(arr1[2], "arr1[2]");
     print(arr1, "arr1");
     SPLIT_LINE

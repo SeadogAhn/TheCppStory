@@ -1,31 +1,31 @@
-#include "MyString.hpp"
+#include "String.hpp"
 
 #include <cstring>
 #include <algorithm>
 #include <stdexcept>
 
-CString::CString()
+String::String()
 {
 	create();
 }
 
-CString::CString(const value_type* str)
+String::String(const value_type* str)
 {
 	create(str, std::strlen(str));
 }
 
-CString::CString(const CString& str)
+String::String(const String& str)
 {
 	std::cout << "copy constructor" << std::endl;
 	create(str.begin(), str.end());
 }
 
-CString::~CString()
+String::~String()
 {
 	uncreate();
 }
 
-CString& CString::operator=(const CString& rhs)
+String& String::operator=(const String& rhs)
 {
 	std::cout << "assign operator" << std::endl;
 	// check for self-assignment
@@ -39,7 +39,7 @@ CString& CString::operator=(const CString& rhs)
 }
 
 
-CString& CString::operator+=(const CString& cs)
+String& String::operator+=(const String& cs)
 {
 	size_type szOld = size();
 	size_type szNew = szOld + cs.size();
@@ -53,25 +53,25 @@ CString& CString::operator+=(const CString& cs)
 
 	data = newData;
 	avail = data + szNew;
-	
+
 	return *this;
 }
 
-void CString::create()
+void String::create()
 {
 	data = alloc.allocate(1);
 	std::uninitialized_fill(data, data + 1, 0);
 	avail = data;
 }
 
-void CString::create(const value_type* str, size_type sz)
+void String::create(const value_type* str, size_type sz)
 {
 	data = alloc.allocate(sz + 1);
 	std::uninitialized_fill(data, data + sz + 1, 0);
 	avail = std::uninitialized_copy(str, str+sz, data);
 }
 
-void CString::create(const_iterator i, const_iterator j)
+void String::create(const_iterator i, const_iterator j)
 {
 	size_type sz = j - i;
 	data = alloc.allocate(sz + 1);
@@ -79,7 +79,7 @@ void CString::create(const_iterator i, const_iterator j)
 	avail = std::uninitialized_copy(i, j, data);
 }
 
-void CString::uncreate()
+void String::uncreate()
 {
 	if (data) {
 		// destroy (in reverse order) the elements that were constructed
@@ -88,22 +88,22 @@ void CString::uncreate()
 			alloc.destroy(--it);
 		alloc.deallocate(data, avail - data + 1);
 	}
-	// reset pointers to indicate that the `CString' is empty again
+	// reset pointers to indicate that the `String' is empty again
 	data = avail = 0;
 }
 
-const char* CString::c_str() const noexcept
+const char* String::c_str() const noexcept
 {
 	return data;
 }
 
-std::ostream& operator<< (std::ostream& os, const CString& cs)
+std::ostream& operator<< (std::ostream& os, const String& cs)
 {
 	os << cs.c_str();
 	return os;
 }
 
-std::istream& operator>> (std::istream& is, CString& cs)
+std::istream& operator>> (std::istream& is, String& cs)
 {
 	char str[2048];
 	is >> str;
@@ -111,9 +111,9 @@ std::istream& operator>> (std::istream& is, CString& cs)
 	return is;
 }
 
-const CString operator+(const CString& cs1, const CString& cs2)
+const String operator+(const String& cs1, const String& cs2)
 {
-	CString temp(cs1);
+	String temp(cs1);
 	temp += cs2;
 	return temp;
 }

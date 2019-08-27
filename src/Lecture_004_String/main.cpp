@@ -1,8 +1,8 @@
-#include "MyString.hpp"
+#include "String.hpp"
 
 using namespace std;
 
-void func(CString str)
+void func(String str)
 {
 	cout << str << endl;
 }
@@ -10,16 +10,16 @@ void func(CString str)
 int main()
 {
 	// using default constructor
-	CString str1;
+	String str1;
 	cout << str1 << 'A' << endl;
 	cout << str1.size() << endl;
 	cout << sizeof(str1) << endl;
 	// using assign operator
 	str1 = "Hello";
 	// using overloded constructor
-	CString str2 = "World!";
+	String str2 = "World!";
 	// using overloded constructor after using operator+
-	CString str3 = str1 + " " + str2;
+	String str3 = str1 + " " + str2;
 	// usng overloded operator<<
 	cout << str1 << ' ' << str1.size() << endl;
 	cout << str2 << ' ' << str2.size() << endl;
@@ -31,17 +31,17 @@ int main()
 	cin >> str1;
 	// using operator+=
 	str2 += str1;
-	
+
 	cout << str1 << endl;
 	cout << str2 << endl;
 	cout << str3 << endl;
 
-	CString str = "0123456789";
+	String str = "0123456789";
 	// using std::reverse algorithm with begin & end are iterator
 	reverse(str.begin(), str.end());
 	cout << str << endl;
 
-	CString::iterator pos = find(str.begin(), str.end(), '7');
+	String::iterator pos = find(str.begin(), str.end(), '7');
 	cout << distance(str.begin(), pos) << endl;
 
 	// using range based loop
