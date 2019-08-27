@@ -1,5 +1,4 @@
-﻿#include "pch.h"
-#include "SmartPointer.h"
+﻿#include "SmartPointer.h"
 
 #include <iostream>
 #include <string>
