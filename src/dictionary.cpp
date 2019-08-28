@@ -117,3 +117,12 @@ int main()
 
 	return EXIT_SUCCESS;
 }
+
+/* dic.txt
+(apple),(An apple is a round fruit with smooth green, yellow, or red skin and firm white flesh)
+(bell),(A bell is a device that makes a ringing sound and is used to give a signal or to attract people's attention)
+(data),(Data is information that can be stored and used by a computer program.)
+(structure),(A structure is something that consists of parts connected together in an ordered way.)
+(test),(When you test something, you try it, for example by touching it or using it for a short time, in order to find out what it is, what condition it is in, or how well it works)
+(test),(A test is a deliberate action or experiment to find out how well something works)
+*/
