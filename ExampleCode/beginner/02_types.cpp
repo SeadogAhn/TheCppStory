@@ -21,20 +21,22 @@ int main()
 	int Integer(4);
 	// long
 	long Long(4);
+    // double
+	float Float{ 2.5 };
 	// double
 	double Double{ 3.5 };
 	// complex
 	complex<double> Complex{ 5.3, 7.2 };
 	// string
 	string String("String");
-	// reference to string
+	// reference of string
 	string& ReferenceOfString = String;
 	// array of int
 	int Array[5] = { 0, };
 	// pointer to array
 	int* Pointer = Array;
 	// array of pointer
-	int* ArrayOfPointer[5] = { 0, };
+	int* PointerToArray[5] = { 0, };
 	// array pointer
 	int(*ArrayPointer)[5] = &Array;
 
@@ -59,5 +61,4 @@ int main()
 		}
 		cout << endl;
 	}
-
 }

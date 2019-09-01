@@ -1,0 +1,24 @@
+SHELL=/bin/sh
+MAKE=make -f Makefile.win.mingw
+MAKEINSTALL=$(MAKE) install
+MAKECLEAN=$(MAKE) clean
+MAKEUNINSTALL=$(MAKE) uninstall
+
+CXX = g++
+CC = gcc
+
+SUBS = beginner \
+	intermediate \
+	advanced
+
+all:
+	-for c in $(SUBS); do echo "=== $$c =="; (cd $$c; $(MAKE) "CXX=$(CXX)" "CC=$(CC)") done
+
+clean:
+	-for c in $(SUBS); do echo "=== $$c =="; (cd $$c; $(MAKECLEAN) "CXX=$(CXX)" "CC=$(CC)") done
+
+install:
+	-for c in $(SUBS); do echo "=== $$c =="; (cd $$c; $(MAKEINSTALL) "CXX=$(CXX)" "CC=$(CC)") done
+
+uninstall:
+	-for c in $(SUBS); do echo "=== $$c =="; (cd $$c; $(MAKEUNINSTALL) "CXX=$(CXX)" "CC=$(CC)") done
