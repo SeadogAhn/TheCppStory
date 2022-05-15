@@ -1,4 +1,4 @@
-# The C++ Story
+# A Story of C++
 The Story of the C++ programming language
 
 ![Alt text](image/C++_Story_by_seadog.png)
